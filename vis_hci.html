@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Police Killings 2015</title>
+
+      <style>
+        {font-family: "source-sans-pro";}
+        .map { margin: auto; position: relative; height: 800px; width: 1200px; margin-top: -115px;}
+      </style>
+
+    </head>
+
+    <body>
+
+      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="http://d3js.org/topojson.v1.min.js"></script>
+      <script src="d3/datamaps.usa.min.js"></script>
+
+          <h3 style="text-align: center;">Police Killings by State (2015)</h3>
+          <div class="map" id="map_killing"></div>
+
+          <script>
+          var killing = new Datamap({
+            scope: "usa",
+            element: document.getElementById('map_killing'),
+            geographyConfig: {
+              borderColor: '#000000',
+              highlightBorderColor: '#bada55',
+             popupTemplate: function(geography, data) {
+                return '<div class="hoverinfo">' + geography.properties.name + ' - Total Police Killings: ' +  data.numberOfDeaths + ' '
+              },
+              highlightBorderWidth: 3
+            },
+
+            fills: {
+            'Very High': '#650006',
+            'High': '#BD0000',
+            'Medium': '#FF0000',
+            'Low': '#F17070',
+            'Very Low': '#FBD5D3',
+            'None': '#FFFFFF',
+            defaultFill: '#EDDC4E'
+          },
+          data:{
+            "AZ": {
+                "fillKey": "Low",
+                "numberOfDeaths": 25
+            },
+            "CO": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 12
+            },
+            "DE": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 2
+            },
+            "FL": {
+                "fillKey": "Low",
+                "numberOfDeaths": 29
+            },
+            "GA": {
+                "fillKey": "Low",
+                "numberOfDeaths": 16
+            },
+            "HI": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 4
+            },
+            "ID": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 4
+            },
+            "IL": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 11
+            },
+            "IN": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 8
+            },
+            "IA": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 2
+            },
+            "KS": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 6
+            },
+            "KY": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 7
+            },
+            "LA": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 11
+            },
+            "MD": {
+                "fillKey": "Medium",
+                "numberOfDeaths": 30
+            },
+            "ME": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 1
+            },
+            "MA": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 5
+            },
+            "MN": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 6
+            },
+            "MI": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 9
+            },
+            "MS": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 6
+            },
+            "MO": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 10
+            },
+            "MT": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 2
+            },
+            "NC": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 10
+            },
+            "NE": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 6
+            },
+            "NV": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 3
+            },
+            "NH": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 1
+            },
+            "NJ": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 11
+            },
+            "NY": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 14
+            },
+            "ND": {
+                "fillKey": "None",
+                "numberOfDeaths": 0
+            },
+            "NM": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 5
+            },
+            "OH": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 10
+            },
+            "OK": {
+                "fillKey": "Low",
+                "numberOfDeaths": 22
+            },
+            "OR": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 8
+            },
+            "PA": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 7
+            },
+            "RI": {
+                "fillKey": "None",
+                "numberOfDeaths": 0
+            },
+            "SC": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 9
+            },
+            "SD": {
+                "fillKey": "None",
+                "numberOfDeaths": 0
+            },
+            "TN": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 6
+            },
+            "TX": {
+                "fillKey": "High",
+                "numberOfDeaths": 46
+            },
+            "UT": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 5
+            },
+            "WI": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 5
+            },
+            "VA": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 9
+            },
+            "VT": {
+                "fillKey": "None",
+                "numberOfDeaths": 0
+            },
+            "WA": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 11
+            },
+            "WV": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 2
+            },
+            "WY": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 1
+            },
+            "CA": {
+                "fillKey": "Very High",
+                "numberOfDeaths": 74
+            },
+            "CT": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 1
+            },
+            "AK": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 2
+            },
+            "AR": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 4
+            },
+            "AL": {
+                "fillKey": "Very Low",
+                "numberOfDeaths": 8
+            }
+          }
+          });
+          killing.labels();
+
+          </script>
+
+
+
+
+    </body>
+</html>
